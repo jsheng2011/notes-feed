@@ -26,7 +26,7 @@ class App extends Component {
                 {
                     (() => {
                         if (this.state.data) {
-                            return this.state.data.map(element => <Tile category={element.category[0]}/>);
+                            return this.state.data.map((element, index) => <Tile {...element} key={index}/>);
                         } else {
                             return null;
                         }
