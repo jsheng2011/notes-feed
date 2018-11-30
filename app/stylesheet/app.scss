@@ -1,0 +1,6 @@
+@import '~normalize.css/normalize.css';
+
+$fontFamily : 'Helvetica';
+body, html{
+    font-family: $fontFamily;
+}

@@ -44,5 +44,12 @@ module.exports = {
             filename: '[name].css',
             chunkFilename: '[id].css'
         })
-    ]
+    ],
+    resolve: {
+        alias: {
+            Common: path.resolve(__dirname, '../src/common')
+
+            // Templates: path.resolve(__dirname, 'src/templates/')
+        }
+    }
 };
