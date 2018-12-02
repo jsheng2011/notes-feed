@@ -2,6 +2,8 @@ import './stylesheet/app.scss';
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Tile from 'Common/tile';
+import Dialog from 'Common/dialog';
+import NOTE_SERVER from 'Const/noteServer';
 
 class App extends Component {
     constructor(props) {
@@ -11,7 +13,7 @@ class App extends Component {
         };
     }
     componentDidMount() {
-        fetch('http://localhost:12138/notes')
+        fetch(NOTE_SERVER)
             .then(response => response.json())
             .then(data => {
                 this.setState({
@@ -32,6 +34,18 @@ class App extends Component {
                         }
                     })()
                 }
+                <hr/>
+                <br/>
+                <br/>
+                <br/>
+                <Dialog/>
+                <br/>
+                <br/>
+                <br/><br/>
+                <br/>
+                <br/><br/>
+                <br/>
+                <br/>
             </div>
         );
     }

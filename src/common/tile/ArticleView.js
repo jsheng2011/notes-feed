@@ -7,31 +7,34 @@ export default function ArticleView(props) {
     return (
         <div>
             <section><small>
-                {content}
+                content: {content}
             </small></section>
             <section><small>
-                <a href={link}>{link}</a>
+                link<a href={link}>{link}</a>
             </small></section>
             <div><small>
                 {
                     memo.map((memo, index) => {
+                        if (!memo) {
+                            return;
+                        }
                         const {content, modifiedTime, createdTime} = memo;
 
                         return (
                             <div key={index}>
-                                <div>content: {content}</div>
-                                <div>modifiedTime: {modifiedTime}</div>
-                                <div>createdTime: {createdTime}</div>
+                                <div>memo.content: {content}</div>
+                                <div>memo.modifiedTime: {modifiedTime}</div>
+                                <div>memo.createdTime: {createdTime}</div>
                             </div>
                         );
                     })
                 }
             </small></div>
             <section><small>
-                {createdTime}
+                createdTime: {createdTime}
             </small></section>
             <section><small>
-                {modifiedTime}
+                modifiedTime: {modifiedTime}
             </small></section>
         </div>
     );

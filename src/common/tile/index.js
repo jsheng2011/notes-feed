@@ -36,7 +36,8 @@ export default class Tile extends Component {
 
         return (
             <div>
-                <p>Category: {category}</p>
+                <h1>Category: {category}</h1>
+                <hr/>
                 {
                     (() => {
                         switch (category[0]) {

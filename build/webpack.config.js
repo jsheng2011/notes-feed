@@ -5,7 +5,7 @@ let path = require('path');
 
 module.exports = {
     entry: {
-        app: path.resolve(__dirname, '../app/index.js')
+        app: path.resolve(__dirname, '../src/app/index.js')
     },
     module: {
         rules: [
@@ -37,7 +37,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebPackPlugin({
-            template: path.resolve(__dirname, '../app/index.html'),
+            template: path.resolve(__dirname, '../src/app/index.html'),
             filename: './index.html'
         }),
         new MiniCssExtractPlugin({
@@ -47,9 +47,8 @@ module.exports = {
     ],
     resolve: {
         alias: {
-            Common: path.resolve(__dirname, '../src/common')
-
-            // Templates: path.resolve(__dirname, 'src/templates/')
+            Common: path.resolve(__dirname, '../src/common'),
+            Const: path.resolve(__dirname, '../src/const')
         }
     }
 };
