@@ -1,8 +1,14 @@
 import React from 'react';
 
 export default function ArticleView(props) {
-    const {article, link, memo, createdTime, modifiedTime} = props.article,
-        {content} = article;
+    const {article, link, memo, createdTime, modifiedTime} = props.article;
+    let content;
+
+    if (article) {
+        content = article.content;
+    }
+
+    console.log('article', article);
 
     return (
         <div>

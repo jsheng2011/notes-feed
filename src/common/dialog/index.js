@@ -85,65 +85,70 @@ export default class Dialog extends Component {
                         const category = this.state.category,
                             {articleContent, acticleLink, acticleMemo} = category;
 
-                        console.log('result', this.state[`new${startCase(this.state.category)}`]);
-                        fetch(new Request('http://localhost:12138/notes', {
-                            method: 'POST',
-                            mode: 'cors', // No cors needed for ibm github pages. DON'T ASK WHY!
-                            body: JSON.stringify({
-                                category: ['article'],
-                                article: {
-                                    article: {
-                                        content: articleContent,
-                                        createdTime: Date.now()
-                                    },
-                                    link: acticleLink,
-                                    memo: [
-                                        {
-                                            content: acticleMemo,
-                                            createdTime: Date.now()
-                                        }
-                                    ]
-                                }
+                        // Return xhr;
 
-                            })
-                        }))
+                        // Fetch(new Request('http://localhost:12138/notes', {
+                        //     Method: 'POST',
+
+                        //     // Mode: 'cors', // No cors needed for ibm github pages. DON'T ASK WHY!,
+                        //     Header: myHeaders,
+                        //     Body: JSON.stringify({
+                        //         Category: 'article',
+                        //         Article: {
+                        //             Link: 'http://www.baidu.com',
+                        //             Read: true,
+                        //             Memo: [
+                        //                 {
+                        //                     Content: acticleMemo,
+                        //                     CreatedTime: Date.now().toString()
+                        //                 }
+                        //             ],
+                        //             Article: {
+                        //                 Content: 'aaaaa',
+                        //                 CreatedTime: Date.now().toString()
+                        //             }
+                        //         }
+                        //     })
+                        // }));
 
                         // fetch('http://localhost:12138/notes', {
                         //     Method: 'POST',
                         //     Headers: {
                         //         Accept: 'application/json',
                         //         'Content-Type': 'application/json',
+
                         //         Mode: 'cors'
                         //     },
                         //     Body: JSON.stringify({
-                        //         Category,
+                        //         Category: 'article',
                         //         Article: {
+                        //             Link: 'http://www.baidu.com',
+                        //             Read: true,
+                        //             Memo: [
+                        //                 {
+                        //                     Content: acticleMemo,
+                        //                     CreatedTime: Date.now().toString()
+                        //                 }
+                        //             ],
                         //             Article: {
-                        //                 Content: articleContent,
-                        //                 CreatedTime: Date.now()
+                        //                 Content: 'aaaaa',
+                        //                 CreatedTime: Date.now().toString()
                         //             }
-                        //         },
-                        //         Link: acticleLink,
-                        //         Memo: [
-                        //             {
-                        //                 Content: acticleMemo,
-                        //                 CreatedTime: Date.now()
-                        //             }
-                        //         ]
+                        //         }
 
                         //     })
                         // })
-                            .then(response => {
-                                console.log({response});
+                        // .then(response => {
+                        //     Console.log({response});
 
-                                return response.json();
-                            })
-                            .then(data => {
-                                console.log('data', data);
-                            })
-                            .catch(e => {
-                                console.log(e);
-                            });
+                        //     Return response.json();
+                        // })
+                        // .then(data => {
+                        //     Console.log('data', data);
+                        // })
+                        // .catch(e => {
+                        //     Console.log(e);
+                        // });
                     }}>Save</button>
                 </section>
             </div>
