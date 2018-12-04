@@ -34,13 +34,15 @@ export default class Tile extends Component {
     render() {
         const {category} = this.props;
 
+        console.log('category', category);
+
         return (
             <div>
                 <h1>Category: {category}</h1>
                 <hr/>
                 {
                     (() => {
-                        switch (category[0]) {
+                        switch (category) {
                             case 'article':
                                 return this._renderArticle();
                             case 'vocabulary':
