@@ -2,7 +2,7 @@ import './stylesheet/app.scss';
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Tile from 'Common/tile';
-import Dialog from 'Common/dialog';
+import Forms from 'Common/forms';
 import {readAllNotes} from 'Service/noteService';
 
 class App extends Component {
@@ -35,7 +35,7 @@ class App extends Component {
                     this._populateData()
                 }
                 <hr/>
-                <Dialog/>
+                <Forms/>
             </div>
         );
     }
