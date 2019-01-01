@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {addNote, deleteNote, updateNoteById} from 'Service/noteService.js';
+import {addNote, deleteNote, updateNoteById, deleteNoteById} from 'Service/noteService.js';
 import ArticleForm from './ArticleForm';
 
 export default class Dialog extends Component {
@@ -10,6 +10,7 @@ export default class Dialog extends Component {
             newArticle: {}
         };
 
+        this._renderFormByCategory = this._renderFormByCategory.bind(this);
         this._renderArticleForm = this._renderArticleForm.bind(this);
         this._renderVocabularyForm = this._renderVocabularyForm.bind(this);
         this._renderNoteForm = this._renderNoteForm.bind(this);
@@ -19,7 +20,23 @@ export default class Dialog extends Component {
         this._getAllCurrentFormData = this._getAllCurrentFormData.bind(this);
         this._onSaveArticle = this._onSaveArticle.bind(this);
     }
+    _renderFormByCategory(category) {
+        switch (category) {
+            case 'article':
+                return this._renderArticleForm();
+            case 'vocabulary':
+                return this._renderVocabularyForm();
+            case 'note':
+                return this._renderNoteForm();
+            case 'idea':
+                return this._renderIdeaForm();
+            case 'todo':
+                return this._renderTodoForm();
 
+            default:
+                break;
+        }
+    }
     _renderArticleForm() {
         return <ArticleForm getNewArticle={this._getNewArticle}/>;
     }
@@ -95,25 +112,7 @@ export default class Dialog extends Component {
                     }}/>
                 </section>
                 <section>
-                    {
-                        (() => {
-                            switch (this.state.category) {
-                                case 'article':
-                                    return this._renderArticleForm();
-                                case 'vocabulary':
-                                    return this._renderVocabularyForm();
-                                case 'note':
-                                    return this._renderNoteForm();
-                                case 'idea':
-                                    return this._renderIdeaForm();
-                                case 'todo':
-                                    return this._renderTodoForm();
-
-                                default:
-                                    break;
-                            }
-                        })()
-                    }
+                    { this._renderFormByCategory(this.state.category) }
                 </section>
                 <section>
                     <button onClick={this._onSaveArticle}>Save</button>
@@ -151,9 +150,15 @@ export default class Dialog extends Component {
                         modifiedTime: new Date().toISOString()
                     });
 
-                    updateNoteById('5c2bc731426c6a1bfbf07570', data);
+                    updateNoteById('5c2bcf609767071dcf31d672', data);
                 }}>
                     update
+                </button>
+
+                <button onClick={() => {
+                    deleteNoteById('5c2bcf609767071dcf31d672');
+                }}>
+                    Delete
                 </button>
             </div>
         );

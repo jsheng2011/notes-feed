@@ -13,7 +13,14 @@ function addNote(data, url = NOTE_SERVER) {
     });
 }
 
-function deleteNote(data, url = NOTE_SERVER) {
+function deleteNote(url = NOTE_SERVER) {
+    urlRequest({
+        url,
+        method: 'delete'
+    });
+}
+
+function deleteNoteById(id, url = `${NOTE_SERVER}/${id}`) {
     urlRequest({
         url,
         method: 'delete'
@@ -43,5 +50,6 @@ export {
     addNote,
     deleteNote,
     readAllNotes,
-    updateNoteById
+    updateNoteById,
+    deleteNoteById
 };
