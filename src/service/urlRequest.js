@@ -1,4 +1,4 @@
-export default function urlRequest({url, data = null, method, use = () => {}, onreadystatechange}) {
+export default function urlRequest({url, data = null, method, use = () => {}, onreadystatechange = () => {}}) {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function(...arg) {
         if (this.readyState == 4 && this.status == 200) {

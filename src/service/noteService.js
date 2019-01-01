@@ -26,12 +26,22 @@ function readAllNotes(onData, url = NOTE_SERVER) {
         .then(onData);
 }
 
-function updateNote(data, url = NOTE_SERVER) {
-
+function updateNoteById(id, data, url = `${NOTE_SERVER}/${id}`) {
+    console.log('data', data);
+    urlRequest({
+        url,
+        data,
+        method: 'put',
+        use: xhttp => {
+            xhttp.setRequestHeader('Content-type', 'application/json');
+            xhttp.setRequestHeader('Accept', 'application/json');
+        }
+    });
 }
 
 export {
     addNote,
     deleteNote,
-    readAllNotes
+    readAllNotes,
+    updateNoteById
 };

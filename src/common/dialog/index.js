@@ -1,11 +1,6 @@
 import React, {Component} from 'react';
-import {addNote, deleteNote} from 'Service/noteService.js';
-
-// import axios from 'axios';
-// import startCase from 'lodash/startCase';
+import {addNote, deleteNote, updateNoteById} from 'Service/noteService.js';
 import ArticleForm from './ArticleForm';
-
-// import NOTE_SERVER from 'Const/noteServer';
 
 export default class Dialog extends Component {
     constructor(props) {
@@ -21,6 +16,7 @@ export default class Dialog extends Component {
         this._renderIdeaForm = this._renderIdeaForm.bind(this);
         this._renderTodoForm = this._renderTodoForm.bind(this);
         this._getNewArticle = this._getNewArticle.bind(this);
+        this._getAllCurrentFormData = this._getAllCurrentFormData.bind(this);
         this._onSaveArticle = this._onSaveArticle.bind(this);
     }
 
@@ -50,9 +46,15 @@ export default class Dialog extends Component {
         });
     }
 
+    _getAllCurrentFormData() {
+        return {
+            category: this.state.category,
+            ...this.state.newArticle
+        };
+    }
+
     _onSaveArticle() {
-        const category = this.state.category;
-        const {articleContent, articleLink, articleMemo, articleMemo1} = this.state.newArticle;
+        const {category, articleContent, articleLink, articleMemo, articleMemo1} = this._getAllCurrentFormData();
         const data = JSON.stringify({
             category,
             article: {
@@ -82,8 +84,6 @@ export default class Dialog extends Component {
     }
 
     render() {
-        console.log(this.state.newArticle);
-
         return (
             <div>
                 <section>
@@ -122,6 +122,38 @@ export default class Dialog extends Component {
                     deleteNote();
                 }}>
                     Delete All
+                </button>
+
+                <button onClick={() => {
+                    const {category, articleContent, articleLink, articleMemo, articleMemo1} = this._getAllCurrentFormData();
+                    const data = JSON.stringify({
+                        category,
+                        article: {
+                            link: articleLink,
+                            read: true,
+                            memo: [
+                                {
+                                    content: articleMemo,
+                                    createdTime: new Date().toISOString(),
+                                    modifiedTime: new Date().toISOString()
+                                },
+                                {
+                                    content: articleMemo1,
+                                    createdTime: new Date().toISOString(),
+                                    modifiedTime: new Date().toISOString()
+                                }
+                            ],
+                            article: {
+                                content: articleContent
+                            }
+                        },
+                        createdTime: new Date().toISOString(),
+                        modifiedTime: new Date().toISOString()
+                    });
+
+                    updateNoteById('5c2bc731426c6a1bfbf07570', data);
+                }}>
+                    update
                 </button>
             </div>
         );
