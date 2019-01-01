@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Tile from 'Common/tile';
 import Dialog from 'Common/dialog';
-import {readAllNotes} from '../service/noteService';
+import {readAllNotes} from 'Service/noteService';
 
 class App extends Component {
     constructor(props) {
@@ -34,7 +34,6 @@ class App extends Component {
                 {
                     this._populateData()
                 }
-
                 <hr/>
                 <Dialog/>
             </div>

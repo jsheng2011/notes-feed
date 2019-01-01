@@ -1,4 +1,4 @@
-import NOTE_SERVER from '../const/noteServer.js';
+import NOTE_SERVER from 'Const/noteServer.js';
 import urlRequest from './urlRequest.js';
 
 function addNote(data, url = NOTE_SERVER) {

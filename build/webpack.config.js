@@ -48,7 +48,9 @@ module.exports = {
     resolve: {
         alias: {
             Common: path.resolve(__dirname, '../src/common'),
-            Const: path.resolve(__dirname, '../src/const')
+            Const: path.resolve(__dirname, '../src/const'),
+            App: path.resolve(__dirname, '../src/app'),
+            Service: path.resolve(__dirname, '../src/service')
         }
     }
 };

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {addNote, deleteNote} from '../../service/noteService.js';
+import {addNote, deleteNote} from 'Service/noteService.js';
 
 // import axios from 'axios';
 // import startCase from 'lodash/startCase';
