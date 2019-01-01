@@ -16,18 +16,28 @@ export default class Tile extends Component {
     }
 
     _renderArticle() {
+        console.info('rendering: Article');
+
         return <ArticleView {...this.props}/>;
     }
     _renderVocabulary() {
+        console.info('rendering: Vocabulary');
+
         return <VocabularyView {...this.props}/>;
     }
     _renderNote() {
+        console.info('rendering: Note');
+
         return <NoteView {...this.props}/>;
     }
     _renderIdea() {
+        console.info('rendering: Idea');
+
         return <IdeaView {...this.props}/>;
     }
     _renderTodo() {
+        console.info('rendering: Todo');
+
         return <TodoView {...this.props}/>;
     }
 

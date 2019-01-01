@@ -1,14 +1,15 @@
 import React from 'react';
 
 export default function ArticleView(props) {
+    console.log('props.article', props.article);
+
+    // console.log('props.article', props.article);
     const {article, link, memo, createdTime, modifiedTime} = props.article;
     let content;
 
     if (article) {
         content = article.content;
     }
-
-    console.log('article', article);
 
     return (
         <div>
@@ -37,10 +38,10 @@ export default function ArticleView(props) {
                 }
             </small></div>
             <section><small>
-                createdTime: {createdTime}
+                createdTime: {props.createdTime}
             </small></section>
             <section><small>
-                modifiedTime: {modifiedTime}
+                modifiedTime: {props.modifiedTime}
             </small></section>
         </div>
     );

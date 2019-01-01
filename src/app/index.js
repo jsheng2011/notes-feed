@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Tile from 'Common/tile';
 import Dialog from 'Common/dialog';
-import NOTE_SERVER from 'Const/noteServer';
+import {readAllNotes} from '../service/noteService';
 
 class App extends Component {
     constructor(props) {
@@ -11,41 +11,32 @@ class App extends Component {
         this.state = {
             data: null
         };
+        this._populateData = this._populateData.bind(this);
     }
     componentDidMount() {
-        fetch(NOTE_SERVER)
-            .then(response => response.json())
-            .then(data => {
-                this.setState({
-                    data
-                });
+        readAllNotes(data => {
+            this.setState({
+                data
             });
+        });
+    }
+    _populateData() {
+        if (this.state.data) {
+            return this.state.data.map((element, index) => <Tile {...element} key={index}/>);
+        } else {
+            return null;
+        }
     }
     render() {
         return (
             <div>
 
                 {
-                    (() => {
-                        if (this.state.data) {
-                            return this.state.data.map((element, index) => <Tile {...element} key={index}/>);
-                        } else {
-                            return null;
-                        }
-                    })()
+                    this._populateData()
                 }
+
                 <hr/>
-                <br/>
-                <br/>
-                <br/>
                 <Dialog/>
-                <br/>
-                <br/>
-                <br/><br/>
-                <br/>
-                <br/><br/>
-                <br/>
-                <br/>
             </div>
         );
     }

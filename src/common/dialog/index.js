@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
-import axios from 'axios';
-import startCase from 'lodash/startCase';
+import {addNote, deleteNote} from '../../service/noteService.js';
+
+// import axios from 'axios';
+// import startCase from 'lodash/startCase';
 import ArticleForm from './ArticleForm';
-import NOTE_SERVER from 'Const/noteServer';
+
+// import NOTE_SERVER from 'Const/noteServer';
 
 export default class Dialog extends Component {
     constructor(props) {
@@ -17,8 +20,8 @@ export default class Dialog extends Component {
         this._renderNoteForm = this._renderNoteForm.bind(this);
         this._renderIdeaForm = this._renderIdeaForm.bind(this);
         this._renderTodoForm = this._renderTodoForm.bind(this);
-
         this._getNewArticle = this._getNewArticle.bind(this);
+        this._onSaveArticle = this._onSaveArticle.bind(this);
     }
 
     _renderArticleForm() {
@@ -45,6 +48,37 @@ export default class Dialog extends Component {
         this.setState({
             newArticle: v
         });
+    }
+
+    _onSaveArticle() {
+        const category = this.state.category;
+        const {articleContent, articleLink, articleMemo, articleMemo1} = this.state.newArticle;
+        const data = JSON.stringify({
+            category,
+            article: {
+                link: articleLink,
+                read: true,
+                memo: [
+                    {
+                        content: articleMemo,
+                        createdTime: new Date().toISOString(),
+                        modifiedTime: new Date().toISOString()
+                    },
+                    {
+                        content: articleMemo1,
+                        createdTime: new Date().toISOString(),
+                        modifiedTime: new Date().toISOString()
+                    }
+                ],
+                article: {
+                    content: articleContent
+                }
+            },
+            createdTime: new Date().toISOString(),
+            modifiedTime: new Date().toISOString()
+        });
+
+        addNote(data);
     }
 
     render() {
@@ -82,109 +116,13 @@ export default class Dialog extends Component {
                     }
                 </section>
                 <section>
-                    <button onClick={() => {
-                        console.log('axios', axios);
-                        const category = this.state.category,
-                            {articleContent, acticleLink, acticleMemo} = category;
-
-                        axios.post('http://localhost:12138/notes', {
-                            category: 'article',
-                            article: {
-                                link: 'http://www.rrr.com',
-                                read: true,
-                                memo: [
-                                    {
-                                        content: 'rrr',
-                                        createdTime: 'rrr'
-                                    }
-                                ]
-                            }
-                        }, {
-                            method: 'post',
-                            proxy: {
-                                host: '192.168.0.15',
-                                port: 8080
-                            }
-
-                        })
-                            .then(response => {
-                                console.log(response);
-                            })
-                            .catch(error => {
-                                console.log(error);
-                            });
-
-                        // Return xhr;
-
-                        //     aa = new Request('http://localhost:12138/notes', {
-                        //         method: 'POST',
-
-                        //         mode: 'cors',
-
-                        //         credentials: 'include',
-
-                        //         // Mode: 'cors', // No cors needed for ibm github pages. DON'T ASK WHY!,
-                        //         headers: {
-                        //             'Content-Type': 'application/json'
-                        //         },
-
-                        //         // body:'JSON!!!'
-                        //         body: JSON.stringify({
-                        //             category: 'article',
-                        //             article: {
-                        //                 link: 'http://www.rrr.com',
-                        //                 read: true,
-                        //                 memo: [
-                        //                     {
-                        //                         content: 'rrr',
-                        //                         createdTime: 'rrr'
-                        //                     }
-                        //                 ]
-                        //             }
-                        //         })
-                        //     });
-                        // fetch(aa);
-
-                        // fetch('http://localhost:12138/notes', {
-                        //     Method: 'POST',
-                        //     Headers: {
-                        //         Accept: 'application/json',
-                        //         'Content-Type': 'application/json',
-
-                        //         Mode: 'cors'
-                        //     },
-                        //     Body: JSON.stringify({
-                        //         Category: 'article',
-                        //         Article: {
-                        //             Link: 'http://www.baidu.com',
-                        //             Read: true,
-                        //             Memo: [
-                        //                 {
-                        //                     Content: acticleMemo,
-                        //                     CreatedTime: Date.now().toString()
-                        //                 }
-                        //             ],
-                        //             Article: {
-                        //                 Content: 'aaaaa',
-                        //                 CreatedTime: Date.now().toString()
-                        //             }
-                        //         }
-
-                        //     })
-                        // })
-                        // .then(response => {
-                        //     console.log({response});
-
-                        //     return response.body;
-                        // })
-                        // .then(data => {
-                        //     console.log('data', data);
-                        // })
-                        // .catch(e => {
-                        //     console.log(e);
-                        // });
-                    }}>Save</button>
+                    <button onClick={this._onSaveArticle}>Save</button>
                 </section>
+                <button onClick={() => {
+                    deleteNote();
+                }}>
+                    Delete All
+                </button>
             </div>
         );
     }

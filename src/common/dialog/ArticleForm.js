@@ -5,8 +5,8 @@ export default class ArticleForm extends Component {
         super(props);
         this.state = {
             articleContent: '',
-            acticleLink: '',
-            acticleMemo: ''
+            articleLink: '',
+            articleMemo: ''
         };
     }
     render() {
@@ -22,40 +22,55 @@ export default class ArticleForm extends Component {
                         }, () => {
                             this.props.getNewArticle({
                                 articleContent: value,
-                                acticleLink: this.state.acticleLink,
-                                acticleMemo: this.state.acticleMemo
+                                articleLink: this.state.articleLink,
+                                articleMemo: this.state.articleMemo
                             });
                         });
                     }}/>
                 </section>
                 <section>
-                    <label htmlFor="acticleLink">Article Link:</label>
-                    <input id="acticleLink" onChange={e => {
+                    <label htmlFor="articleLink">Article Link:</label>
+                    <input id="articleLink" onChange={e => {
                         const value = e.target.value;
 
                         this.setState({
-                            acticleLink: value
+                            articleLink: value
                         }, () => {
                             this.props.getNewArticle({
                                 articleContent: this.state.articleContent,
-                                acticleLink: value,
-                                acticleMemo: this.state.acticleMemo
+                                articleLink: value,
+                                articleMemo: this.state.articleMemo
                             });
                         });
                     }}/>
                 </section>
                 <section>
-                    <label htmlFor="acticleMemo">Memo:</label>
-                    <textarea id="acticleMemo" cols="40" rows="7" onChange={e => {
+                    <label htmlFor="articleMemo">Memo:</label>
+                    <textarea id="articleMemo" cols="40" rows="7" onChange={e => {
                         const value = e.target.value;
 
                         this.setState({
-                            acticleMemo: value
+                            articleMemo: value
                         }, () => {
                             this.props.getNewArticle({
                                 articleContent: this.state.articleContent,
-                                acticleLink: this.state.acticleLink,
-                                acticleMemo: value
+                                articleLink: this.state.articleLink,
+                                articleMemo1: this.state.articleMemo1,
+                                articleMemo: value
+                            });
+                        });
+                    }}/>
+                    <textarea id="articleMemo1" cols="40" rows="7" onChange={e => {
+                        const value = e.target.value;
+
+                        this.setState({
+                            articleMemo1: value
+                        }, () => {
+                            this.props.getNewArticle({
+                                articleContent: this.state.articleContent,
+                                articleLink: this.state.articleLink,
+                                articleMemo: this.state.articleMemo,
+                                articleMemo1: value
                             });
                         });
                     }}/>
