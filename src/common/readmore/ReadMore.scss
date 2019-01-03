@@ -1,0 +1,9 @@
+@import 'App/stylesheet/essentials/index.scss';
+
+.jsh-readmore{
+    display: flex;
+    flex-direction: column;
+    .jsh-button{
+        align-self: flex-end;
+    }
+}

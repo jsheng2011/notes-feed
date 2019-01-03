@@ -6,7 +6,8 @@ export default class ArticleForm extends Component {
         this.state = {
             articleContent: '',
             articleLink: '',
-            articleMemo: ''
+            articleMemo: '',
+            articleTitle: ''
         };
     }
     render() {
@@ -23,7 +24,26 @@ export default class ArticleForm extends Component {
                             this.props.getNewArticle({
                                 articleContent: value,
                                 articleLink: this.state.articleLink,
-                                articleMemo: this.state.articleMemo
+                                articleMemo: this.state.articleMemo,
+                                articleTitle: this.state.articleTitle
+                            });
+                        });
+                    }}/>
+                </section>
+                <section>
+                    <label htmlFor="articleTitle">Article ATitle：</label>
+                    <input id="articleTitle" type="text" onChange={e => {
+                        const value = e.target.value;
+
+                        this.setState({
+                            articleTitle: value
+                        }, () => {
+                            this.props.getNewArticle({
+                                articleTitle: value,
+                                articleContent: this.state.articleContent,
+                                articleLink: this.state.articleLink,
+                                articleMemo: this.state.articleMemo,
+                                articleMemo1: this.state.articleMemo1
                             });
                         });
                     }}/>
@@ -39,7 +59,9 @@ export default class ArticleForm extends Component {
                             this.props.getNewArticle({
                                 articleContent: this.state.articleContent,
                                 articleLink: value,
-                                articleMemo: this.state.articleMemo
+                                articleMemo: this.state.articleMemo,
+                                articleMemo1: this.state.articleMemo1,
+                                articleTitle: this.state.articleTitle
                             });
                         });
                     }}/>
@@ -56,6 +78,7 @@ export default class ArticleForm extends Component {
                                 articleContent: this.state.articleContent,
                                 articleLink: this.state.articleLink,
                                 articleMemo1: this.state.articleMemo1,
+                                articleTitle: this.state.articleTitle,
                                 articleMemo: value
                             });
                         });
@@ -70,6 +93,7 @@ export default class ArticleForm extends Component {
                                 articleContent: this.state.articleContent,
                                 articleLink: this.state.articleLink,
                                 articleMemo: this.state.articleMemo,
+                                articleTitle: this.state.articleTitle,
                                 articleMemo1: value
                             });
                         });

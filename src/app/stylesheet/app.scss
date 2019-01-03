@@ -1,6 +1,26 @@
 @import '~normalize.css/normalize.css';
+@import 'essentials/index.scss';
 
 $fontFamily : 'Helvetica';
+
 body, html{
     font-family: $fontFamily;
+    color: $mainColor;
+}
+h1{
+    @extend %h1;
+}
+h2{
+    @extend %h2;
+}
+h3{
+    @extend %h3;
+}
+h4{
+    @extend %h4;
+}
+
+p{
+    @extend %p;
+    line-height: 1.3em;
 }

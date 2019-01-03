@@ -1,10 +1,19 @@
 import React from 'react';
+import Quote from 'Common/quote/index';
+import Label from 'Common/label/Label';
+import Article from 'Common/article/Article';
+import ReadMore from 'Common/readmore/ReadMore';
 
 export default function ArticleView(props) {
     console.log('props.article', props.article);
 
-    // console.log('props.article', props.article);
-    const {article, link, memo, createdTime, modifiedTime} = props.article;
+    console.log('props.article', props.article);
+    const {article, link, memo, title
+
+        // createdTime,
+        // modifiedTime
+    } = props.article;
+
     let content;
 
     if (article) {
@@ -13,36 +22,31 @@ export default function ArticleView(props) {
 
     return (
         <div>
-            <section><small>
-                content: {content}
-            </small></section>
-            <section><small>
-                link<a href={link}>{link}</a>
-            </small></section>
-            <div><small>
-                {
-                    memo.map((memo, index) => {
-                        if (!memo) {
-                            return;
-                        }
-                        const {content, modifiedTime, createdTime} = memo;
+            <h4>{title}</h4>
+            <Label>Article</Label>
+            <ReadMore>
+                <Article>{content}</Article>
+            </ReadMore>
+            <Label>Quotes</Label>
+            {
+                memo.map((memo, index) => {
+                    if (!memo) {
+                        return;
+                    }
+                    const {
+                        content
 
-                        return (
-                            <div key={index}>
-                                <div>memo.content: {content}</div>
-                                <div>memo.modifiedTime: {modifiedTime}</div>
-                                <div>memo.createdTime: {createdTime}</div>
-                            </div>
-                        );
-                    })
-                }
-            </small></div>
-            <section><small>
-                createdTime: {props.createdTime}
-            </small></section>
-            <section><small>
-                modifiedTime: {props.modifiedTime}
-            </small></section>
+                        // modifiedTime,
+                        // createdTime
+                    } = memo;
+
+                    return (
+                        <Quote cite={link} key={index}>
+                            {content}
+                        </Quote>
+                    );
+                })
+            }
         </div>
     );
 }

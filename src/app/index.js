@@ -1,5 +1,6 @@
 import './stylesheet/app.scss';
 import React, {Component} from 'react';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import Tile from 'Common/tile';
 import Forms from 'Common/forms';
@@ -28,15 +29,36 @@ class App extends Component {
         }
     }
     render() {
-        return (
-            <div>
 
-                {
-                    this._populateData()
-                }
-                <hr/>
-                <Forms/>
-            </div>
+        // return (
+        //     <div>
+
+        //         {
+        //             this._populateData()
+        //         }
+        //         <hr/>
+        //         <Forms/>
+        //     </div>
+        // );
+
+        return (
+            <Router>
+                <div>
+                    <Route path="/" exact component={() =>
+                        <div>
+                            <Link to="/form/">Forms</Link>
+                            <div style={{border: '1px solid blue', margin: '30px'}}>
+                                {
+                                    this._populateData()
+                                }
+                            </div>
+                            {/* <hr/> */}
+                            {/* <Forms/> */}
+                        </div>
+                    }/>
+                    <Route path="/form/" component={Forms}/>
+                </div>
+            </Router>
         );
     }
 }

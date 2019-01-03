@@ -1,0 +1,19 @@
+@import 'App/stylesheet/essentials/index.scss';
+
+%button{
+    border: none;
+    background: none;
+    margin: 0;
+    padding: 0;
+}
+.jsh-button{
+    @extend %button;
+    outline: none;
+    &__inline{
+        color:$blue;
+        @extend %p;
+    }
+    &:hover{
+        cursor: pointer;
+    }
+}

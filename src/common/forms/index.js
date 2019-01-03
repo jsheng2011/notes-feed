@@ -71,12 +71,13 @@ export default class Dialog extends Component {
     }
 
     _onSaveArticle() {
-        const {category, articleContent, articleLink, articleMemo, articleMemo1} = this._getAllCurrentFormData();
+        const {category, articleContent, articleTitle, articleLink, articleMemo, articleMemo1} = this._getAllCurrentFormData();
         const data = JSON.stringify({
             category,
             article: {
                 link: articleLink,
                 read: true,
+                title: articleTitle,
                 memo: [
                     {
                         content: articleMemo,
@@ -124,12 +125,13 @@ export default class Dialog extends Component {
                 </button>
 
                 <button onClick={() => {
-                    const {category, articleContent, articleLink, articleMemo, articleMemo1} = this._getAllCurrentFormData();
+                    const {category, articleContent, articleLink, articleTitle, articleMemo, articleMemo1} = this._getAllCurrentFormData();
                     const data = JSON.stringify({
                         category,
                         article: {
                             link: articleLink,
                             read: true,
+                            title: articleTitle,
                             memo: [
                                 {
                                     content: articleMemo,
