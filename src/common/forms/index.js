@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {addNote, deleteNote, updateNoteById, deleteNoteById} from 'Service/noteService.js';
 import ArticleForm from './ArticleForm';
+import TranslationForm from './TranslationForm';
 
 export default class Dialog extends Component {
     constructor(props) {
@@ -24,7 +25,7 @@ export default class Dialog extends Component {
         switch (category) {
             case 'article':
                 return this._renderArticleForm();
-            case 'vocabulary':
+            case 'voc':
                 return this._renderVocabularyForm();
             case 'note':
                 return this._renderNoteForm();
@@ -42,7 +43,7 @@ export default class Dialog extends Component {
     }
 
     _renderVocabularyForm() {
-        return 'this is _renderVocabularyForm';
+        return <TranslationForm getNewArticle={this._getNewArticle}/>;
     }
 
     _renderNoteForm() {
