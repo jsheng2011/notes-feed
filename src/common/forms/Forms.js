@@ -48,7 +48,7 @@ export default class Dialog extends Component {
     }
 
     _renderVocabularyForm() {
-        return <TranslationForm getNewArticle={this._getNewArticle}/>;
+        return <TranslationForm getDataToBeSent={this._getDataToBeSent}/>;
     }
 
     _renderTermForm() {
@@ -110,10 +110,10 @@ export default class Dialog extends Component {
                 <Button onClick={this._onSaveData}>Save</Button>
                 <hr/>
                 <p>TODO:to be deprecated</p>
-                <section>
+                {/* <section>
                     <button onClick={this._onSaveArticle}>Save</button>
-                </section>
-                <button onClick={() => {
+                </section> */}
+                {/* <button onClick={() => {
                     deleteNote();
                 }}>
                     Delete All
@@ -156,7 +156,7 @@ export default class Dialog extends Component {
                     deleteNoteById('5c2bcf609767071dcf31d672');
                 }}>
                     Delete
-                </button>
+                </button> */}
             </div>
         );
     }

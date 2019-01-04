@@ -35,7 +35,8 @@ class App extends Component {
                 <div>
                     <Route path="/feeds/" component={() =>
                         <div>
-                            <Link to="/form/">Forms</Link>
+                            {/* TODO: make it component */}
+                            <Link to="/">Home</Link>
                             <div style={{border: '1px solid blue', margin: '30px'}}>
                                 {
                                     this._populateData()

@@ -1,21 +1,14 @@
 import React from 'react';
+import Label from 'Common/label/Label';
+import Article from 'Common/article/Article';
 
 export default function VocabularyView(props) {
-    console.log('this.props.article', props.vocabulary);
-    const {direction, word} = props.vocabulary;
+    const {word, translation} = props.vocabulary;
 
     return (
         <div>
-            <section>
-                <small>
-                    Direction: {direction[0]} ---- {direction[1]}
-                </small>
-            </section>
-            <section>
-                <small>
-                    Word: {word}
-                </small>
-            </section>
+            <Label block>{word}</Label>
+            <Article>{translation}</Article>
         </div>
     );
 }
