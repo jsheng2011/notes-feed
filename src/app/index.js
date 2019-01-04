@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import Tile from 'Common/tile';
-import Forms from 'Common/forms';
+import Forms from 'Common/forms/Forms';
 import {readAllNotes} from 'Service/noteService';
 
 class App extends Component {
@@ -16,6 +16,7 @@ class App extends Component {
     }
     componentDidMount() {
         readAllNotes(data => {
+            console.log('data', data);
             this.setState({
                 data
             });
@@ -29,7 +30,6 @@ class App extends Component {
         }
     }
     render() {
-
         // return (
         //     <div>
 
@@ -52,8 +52,6 @@ class App extends Component {
                                     this._populateData()
                                 }
                             </div>
-                            {/* <hr/> */}
-                            {/* <Forms/> */}
                         </div>
                     }/>
                     <Route path="/form/" component={Forms}/>

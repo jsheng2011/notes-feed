@@ -4,6 +4,7 @@ import VocabularyView from './VocabularyView';
 import NoteView from './NoteView';
 import IdeaView from './IdeaView';
 import TodoView from './TodoView';
+import TermView from './TermView';
 import './index.scss';
 
 export default class Tile extends Component {
@@ -15,6 +16,7 @@ export default class Tile extends Component {
         this._renderNote = this._renderNote.bind(this);
         this._renderIdea = this._renderIdea.bind(this);
         this._renderTodo = this._renderTodo.bind(this);
+        this._renderTerm = this._renderTerm.bind(this);
     }
 
     _renderFeed() {
@@ -29,9 +31,14 @@ export default class Tile extends Component {
                 return this._renderIdea();
             case 'todo':
                 return this._renderTodo();
+            case 'term':
+                return this._renderTerm();
         }
     }
 
+    _renderTerm() {
+        return <TermView {...this.props}/>;
+    }
     _renderArticle() {
         return <ArticleView {...this.props}/>;
     }

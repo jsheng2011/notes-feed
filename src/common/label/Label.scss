@@ -2,4 +2,7 @@
 
 .jsh-label{
     @extend %heading-weight;
+    &__block{
+        display: block;
+    }
 }

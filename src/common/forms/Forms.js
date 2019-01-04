@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {addNote, deleteNote, updateNoteById, deleteNoteById} from 'Service/noteService.js';
 import ArticleForm from './ArticleForm';
 import TranslationForm from './TranslationForm';
+import TermForm from './TermForm';
+import Button from 'Common/button/Button';
 
 export default class Dialog extends Component {
     constructor(props) {
@@ -19,6 +21,10 @@ export default class Dialog extends Component {
         this._renderTodoForm = this._renderTodoForm.bind(this);
         this._getNewArticle = this._getNewArticle.bind(this);
         this._getAllCurrentFormData = this._getAllCurrentFormData.bind(this);
+        this._getDataToBeSent = this._getDataToBeSent.bind(this);
+        this._onSaveData = this._onSaveData.bind(this);
+
+        // TODO: to be depracted, use `this._onSaveData` instead
         this._onSaveArticle = this._onSaveArticle.bind(this);
     }
     _renderFormByCategory(category) {
@@ -27,6 +33,8 @@ export default class Dialog extends Component {
                 return this._renderArticleForm();
             case 'voc':
                 return this._renderVocabularyForm();
+            case 'term':
+                return this._renderTermForm();
             case 'note':
                 return this._renderNoteForm();
             case 'idea':
@@ -39,11 +47,15 @@ export default class Dialog extends Component {
         }
     }
     _renderArticleForm() {
-        return <ArticleForm getNewArticle={this._getNewArticle}/>;
+        return <ArticleForm getNewArticle={this._getNewArticle}/>; // TODO:  `this._getNewArticle` name does not make sense
     }
 
     _renderVocabularyForm() {
         return <TranslationForm getNewArticle={this._getNewArticle}/>;
+    }
+
+    _renderTermForm() {
+        return <TermForm getDataToBeSent={this._getDataToBeSent}/>;
     }
 
     _renderNoteForm() {
@@ -58,7 +70,15 @@ export default class Dialog extends Component {
         return 'this is _renderTodoForm';
     }
 
+    _getDataToBeSent(data) {
+        this.setState({
+            dataToBeSent: data
+        });
+    }
+
+    // TODO: to be deprecated, use `_getDataToBeSent` instead
     _getNewArticle(v) {
+        console.info('vvvv', v);
         this.setState({
             newArticle: v
         });
@@ -70,7 +90,11 @@ export default class Dialog extends Component {
             ...this.state.newArticle
         };
     }
+    _onSaveData() {
+        addNote(this.state.dataToBeSent);
+    }
 
+    // TODO: to be deprecated, use _onSaveData instead
     _onSaveArticle() {
         const {category, articleContent, articleTitle, articleLink, articleMemo, articleMemo1} = this._getAllCurrentFormData();
         const data = JSON.stringify({
@@ -116,6 +140,10 @@ export default class Dialog extends Component {
                 <section>
                     { this._renderFormByCategory(this.state.category) }
                 </section>
+
+                <Button onClick={this._onSaveData}>Save</Button>
+                <hr/>
+                <p>TODO:to be deprecated</p>
                 <section>
                     <button onClick={this._onSaveArticle}>Save</button>
                 </section>
