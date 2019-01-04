@@ -30,21 +30,10 @@ class App extends Component {
         }
     }
     render() {
-        // return (
-        //     <div>
-
-        //         {
-        //             this._populateData()
-        //         }
-        //         <hr/>
-        //         <Forms/>
-        //     </div>
-        // );
-
         return (
             <Router>
                 <div>
-                    <Route path="/" exact component={() =>
+                    <Route path="/feeds" exact component={() =>
                         <div>
                             <Link to="/form/">Forms</Link>
                             <div style={{border: '1px solid blue', margin: '30px'}}>
@@ -54,7 +43,7 @@ class App extends Component {
                             </div>
                         </div>
                     }/>
-                    <Route path="/form/" component={Forms}/>
+                    <Route path="/" component={Forms}/>
                 </div>
             </Router>
         );

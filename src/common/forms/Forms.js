@@ -23,9 +23,6 @@ export default class Dialog extends Component {
         this._getAllCurrentFormData = this._getAllCurrentFormData.bind(this);
         this._getDataToBeSent = this._getDataToBeSent.bind(this);
         this._onSaveData = this._onSaveData.bind(this);
-
-        // TODO: to be depracted, use `this._onSaveData` instead
-        this._onSaveArticle = this._onSaveArticle.bind(this);
     }
     _renderFormByCategory(category) {
         switch (category) {
@@ -47,7 +44,7 @@ export default class Dialog extends Component {
         }
     }
     _renderArticleForm() {
-        return <ArticleForm getNewArticle={this._getNewArticle}/>; // TODO:  `this._getNewArticle` name does not make sense
+        return <ArticleForm getDataToBeSent={this._getDataToBeSent}/>;
     }
 
     _renderVocabularyForm() {
@@ -71,6 +68,7 @@ export default class Dialog extends Component {
     }
 
     _getDataToBeSent(data) {
+        console.log('_getDataToBeSent', data);
         this.setState({
             dataToBeSent: data
         });
@@ -92,38 +90,6 @@ export default class Dialog extends Component {
     }
     _onSaveData() {
         addNote(this.state.dataToBeSent);
-    }
-
-    // TODO: to be deprecated, use _onSaveData instead
-    _onSaveArticle() {
-        const {category, articleContent, articleTitle, articleLink, articleMemo, articleMemo1} = this._getAllCurrentFormData();
-        const data = JSON.stringify({
-            category,
-            article: {
-                link: articleLink,
-                read: true,
-                title: articleTitle,
-                memo: [
-                    {
-                        content: articleMemo,
-                        createdTime: new Date().toISOString(),
-                        modifiedTime: new Date().toISOString()
-                    },
-                    {
-                        content: articleMemo1,
-                        createdTime: new Date().toISOString(),
-                        modifiedTime: new Date().toISOString()
-                    }
-                ],
-                article: {
-                    content: articleContent
-                }
-            },
-            createdTime: new Date().toISOString(),
-            modifiedTime: new Date().toISOString()
-        });
-
-        addNote(data);
     }
 
     render() {
