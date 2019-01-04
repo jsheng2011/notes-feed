@@ -107,7 +107,7 @@ export default class Dialog extends Component {
                     { this._renderFormByCategory(this.state.category) }
                 </section>
 
-                <Button onClick={this._onSaveData}>Save</Button>
+                <Button primary onClick={this._onSaveData}>Save</Button>
                 <hr/>
                 <p>TODO:to be deprecated</p>
                 {/* <section>

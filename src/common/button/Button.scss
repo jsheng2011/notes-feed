@@ -9,6 +9,14 @@
 .jsh-button{
     @extend %button;
     outline: none;
+    &__primary{
+        @extend %m-height;
+        min-width: 100px;
+        padding: auto 24px;
+        background-color: $green;
+        border-radius: 20px;
+        color:$white;
+    }
     &__inline{
         color:$blue;
         @extend %p;
