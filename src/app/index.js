@@ -33,7 +33,7 @@ class App extends Component {
         return (
             <Router>
                 <div>
-                    <Route path="/feeds" exact component={() =>
+                    <Route path="/feeds/" component={() =>
                         <div>
                             <Link to="/form/">Forms</Link>
                             <div style={{border: '1px solid blue', margin: '30px'}}>
@@ -43,7 +43,7 @@ class App extends Component {
                             </div>
                         </div>
                     }/>
-                    <Route path="/" component={Forms}/>
+                    <Route path="/" exact component={Forms}/>
                 </div>
             </Router>
         );

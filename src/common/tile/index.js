@@ -5,7 +5,7 @@ import NoteView from './NoteView';
 import IdeaView from './IdeaView';
 import TodoView from './TodoView';
 import TermView from './TermView';
-import './index.scss';
+import './tile.scss';
 
 export default class Tile extends Component {
     constructor(props) {

@@ -6,6 +6,7 @@ $fontFamily : 'Helvetica';
 body, html{
     font-family: $fontFamily;
     color: $mainColor;
+    background-color:$grayBg; 
 }
 h1{
     @extend %h1;
