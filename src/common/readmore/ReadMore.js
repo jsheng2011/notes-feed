@@ -7,7 +7,8 @@ export default class ReadMore extends Component {
     constructor(props) {
         super(props);
         this._onClickReadMore = this._onClickReadMore.bind(this);
-        this.lines = 200; // TODO: the number is dumb, need to convet it more precisely
+        this.isMuchText = this.props.children.props.children.length > 1000; // TODO: the way to detect text length can be smarter
+        this.lines = this.isMuchText ? 200 : 'auto';
         this.state = {
             ySize: this.lines,
             readActionText: 'Read more...'
@@ -37,7 +38,7 @@ export default class ReadMore extends Component {
                 <Button
                     onClick={this._onClickReadMore}
                     inline
-                >{this.state.readActionText}</Button>
+                >{this.isMuchText && this.state.readActionText}</Button>
             </div>
         );
     }
