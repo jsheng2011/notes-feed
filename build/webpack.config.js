@@ -7,6 +7,9 @@ module.exports = {
     entry: {
         app: path.resolve(__dirname, '../src/app/index.js')
     },
+    output: {
+        publicPath: '/'
+    },
     module: {
         rules: [
             {
@@ -52,5 +55,8 @@ module.exports = {
             App: path.resolve(__dirname, '../src/app'),
             Service: path.resolve(__dirname, '../src/service')
         }
+    },
+    devServer: {
+        historyApiFallback: true
     }
 };
