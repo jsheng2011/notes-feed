@@ -37,14 +37,15 @@ export default class ArticleForm extends Component {
                 <Label htmlFor="jsh-term">Term</Label>
                 <input type="text" name="term" id="jsh-term" onChange={this._onChangText}/>
 
+                <Label htmlFor="jsh-term__explanation">Explanation</Label>
+                <input type="text" name="explanation" id="jsh-term__explanation" onChange={this._onChangText}/>
+
                 <Label htmlFor="jsh-term__source">Source</Label>
                 <input type="text" name="source" id="jsh-term__source" onChange={this._onChangText}/>
 
                 <Label htmlFor="jsh-term__link">Link</Label>
                 <input type="text" name="link" id="jsh-term__link" onChange={this._onChangText}/>
 
-                <Label htmlFor="jsh-term__explanation">Explanation</Label>
-                <input type="text" name="explanation" id="jsh-term__explanation" onChange={this._onChangText}/>
                 {/* TODO: bullet point */}
             </div>
         );
