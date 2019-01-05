@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {deleteNoteById} from 'Service/noteService.js';
 import ArticleView from './ArticleView';
 import VocabularyView from './VocabularyView';
 import NoteView from './NoteView';
@@ -61,7 +62,11 @@ export default class Tile extends Component {
         console.log('category', category);
 
         return (
-            <div className="tile">
+            <div className="tile" onDoubleClick={() => {
+
+                // console.log('this.props._id', this.props._id);
+                deleteNoteById(this.props._id);
+            }}>
                 {
                     this._renderFeed()
                 }
