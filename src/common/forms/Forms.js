@@ -4,6 +4,7 @@ import ArticleForm from './ArticleForm';
 import TranslationForm from './TranslationForm';
 import TermForm from './TermForm';
 import Button from 'Common/button/Button';
+import ButtonGroup from 'Common/buttonGroup/ButtonGroup';
 
 export default class Dialog extends Component {
     constructor(props) {
@@ -96,12 +97,18 @@ export default class Dialog extends Component {
         return (
             <div>
                 <section>
+                    <ButtonGroup>
+                        <Button info>Article</Button>
+                        <Button info active>Vocabulary</Button>
+                        <Button info>Term</Button>
+                    </ButtonGroup>
                     <label htmlFor="catrgory">Catrgory: </label>
                     <input type="text" id="catrgory" placeholder="type category" value={this.state.category} onChange={v => {
                         this.setState({
                             category: v.target.value
                         });
                     }}/>
+
                 </section>
                 <section>
                     { this._renderFormByCategory(this.state.category) }

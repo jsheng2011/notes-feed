@@ -17,6 +17,25 @@
         border-radius: 20px;
         color:$white;
     }
+
+    &__info{
+        @extend %m-height;
+        min-width: 100px;
+        padding: auto 24px;
+        border:1px solid;
+        color:$mainColor;
+        border-radius: 4px;
+        &:hover,
+        .hover{
+            background-color: $mainColor;
+            color:$white;
+        }
+        &:active,
+        .active{
+            background-color: $darkColor;
+            color:$white;
+        }
+    }
     &__inline{
         color:$blue;
         @extend %p;
