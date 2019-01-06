@@ -12,9 +12,7 @@ export default class TextArea extends Component {
     }
     _handleOnChange(e) {
         const {onChange} = this.props;
-        onChange && onChange();
-        console.log('e.target.getBoundingClientRect().height', e.target.getBoundingClientRect().height);
-        console.log('e.target.offsetTop', e.target.scrollTop);
+        onChange && onChange(e);
         if (e.target.scrollTop >= 6 * this.state.step) {
             this.setState({
                 step: this.state.step + 1

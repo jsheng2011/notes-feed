@@ -4,13 +4,14 @@ import './Button.scss';
 
 export default class Button extends Component {
     render() {
-        const {inline, primary, info, active, ...others} = this.props;
+        const {inline, primary, info, active, className, ...others} = this.props;
 
         const classNames = cx('jsh-button', {
             'jsh-button__inline': inline,
             'jsh-button__primary': primary,
             'jsh-button__info': info,
-            active
+            active,
+            [className]: className
         });
 
         return (
