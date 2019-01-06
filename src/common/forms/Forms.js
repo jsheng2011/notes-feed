@@ -10,7 +10,7 @@ export default class Dialog extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            category: 'article',
+            category: 'term',
             newArticle: {}
         };
 
@@ -20,7 +20,6 @@ export default class Dialog extends Component {
         this._renderNoteForm = this._renderNoteForm.bind(this);
         this._renderIdeaForm = this._renderIdeaForm.bind(this);
         this._renderTodoForm = this._renderTodoForm.bind(this);
-        this._getNewArticle = this._getNewArticle.bind(this);
         this._getAllCurrentFormData = this._getAllCurrentFormData.bind(this);
         this._getDataToBeSent = this._getDataToBeSent.bind(this);
         this._onSaveData = this._onSaveData.bind(this);
@@ -75,14 +74,6 @@ export default class Dialog extends Component {
         });
     }
 
-    // TODO: to be deprecated, use `_getDataToBeSent` instead
-    _getNewArticle(v) {
-        console.info('vvvv', v);
-        this.setState({
-            newArticle: v
-        });
-    }
-
     _getAllCurrentFormData() {
         return {
             category: this.state.category,
@@ -94,13 +85,24 @@ export default class Dialog extends Component {
     }
 
     render() {
+        const {category} = this.state;
+
         return (
             <div>
                 <section>
-                    <ButtonGroup>
-                        <Button info>Article</Button>
-                        <Button info active>Vocabulary</Button>
-                        <Button info>Term</Button>
+                    {/* TODO: make it a component like radio group, since it is radio logic */}
+                    <ButtonGroup onChange={v => {
+                        this.setState({
+                            category: v
+                        });
+                    }}>
+                        {/* TODO: can be more dynamic, a set of options only set one time, and use anywhere  */}
+                        <Button info active={category === 'article'} name="article">Article</Button>
+                        <Button info active={category === 'vocabulary'} name="vocabulary">Vocabulary</Button>
+                        <Button info active={category === 'term'} name="term">Term</Button>
+                        <Button info active={category === 'note'} name="note">Note</Button>
+                        <Button info active={category === 'idea'} name="idea">Idea</Button>
+                        <Button info active={category === 'todo'} name="todo">Todo</Button>
                     </ButtonGroup>
                     <label htmlFor="catrgory">Catrgory: </label>
                     <input type="text" id="catrgory" placeholder="type category" value={this.state.category} onChange={v => {

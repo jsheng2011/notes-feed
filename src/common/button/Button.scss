@@ -26,12 +26,12 @@
         color:$mainColor;
         border-radius: 4px;
         &:hover,
-        .hover{
+        &.hover{
             background-color: $mainColor;
             color:$white;
         }
         &:active,
-        .active{
+        &.active{
             background-color: $darkColor;
             color:$white;
         }
