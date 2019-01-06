@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Label from 'Common/label/Label';
+import Input from 'Common/input/Input';
 
 export default class ArticleForm extends Component {
     constructor(props) {
@@ -34,17 +35,17 @@ export default class ArticleForm extends Component {
     render() {
         return (
             <div>
-                <Label htmlFor="jsh-term">Term</Label>
-                <input type="text" name="term" id="jsh-term" onChange={this._onChangText}/>
+                <Label htmlFor="jsh-term" block>Term</Label>
+                <Input fullwidth type="text" name="term" id="jsh-term" onChange={this._onChangText}/>
 
                 <Label htmlFor="jsh-term__explanation">Explanation</Label>
-                <input type="text" name="explanation" id="jsh-term__explanation" onChange={this._onChangText}/>
+                <Input fullwidth type="text" name="explanation" id="jsh-term__explanation" onChange={this._onChangText}/>
 
                 <Label htmlFor="jsh-term__source">Source</Label>
-                <input type="text" name="source" id="jsh-term__source" onChange={this._onChangText}/>
+                <Input fullwidth type="text" name="source" id="jsh-term__source" onChange={this._onChangText}/>
 
                 <Label htmlFor="jsh-term__link">Link</Label>
-                <input type="text" name="link" id="jsh-term__link" onChange={this._onChangText}/>
+                <Input fullwidth type="text" name="link" id="jsh-term__link" onChange={this._onChangText}/>
 
                 {/* TODO: bullet point */}
             </div>

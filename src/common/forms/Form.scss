@@ -1,0 +1,10 @@
+@import 'App/stylesheet/essentials/index.scss';
+
+.jsh-form{
+    width: 64vw;
+    margin:100px auto;
+    background-color:$white; 
+    padding: 2rem;
+    border-radius: 4px;
+    box-shadow: 1px 1px 11px rgba($gray, 0.5);
+}

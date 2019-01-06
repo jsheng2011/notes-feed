@@ -1,0 +1,19 @@
+@import 'App/stylesheet/essentials/index.scss';
+
+%normalizeInput{
+    background: none;
+    border: none;
+    padding: 0;
+    @extend %m-height;
+    color:$mainColor;
+    font-size: 14px;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+.jsh-input{
+    @extend %normalizeInput;
+    border-bottom: 1px solid $lightGray;
+    &__fullwidth{
+        width: 100%;
+    }
+}

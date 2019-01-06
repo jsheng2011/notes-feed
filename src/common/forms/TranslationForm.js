@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 import {TRANSLATION_SERVER} from 'Const/noteServer.js';
+import Input from 'Common/input/Input';
+import Label from 'Common/label/Label';
+import Button from 'Common/button/Button';
+import Article from 'Common/article/Article';
 
 export default class TranslationForm extends Component {
     constructor(props) {
@@ -18,7 +22,7 @@ export default class TranslationForm extends Component {
         });
     }
 
-    _handleTanslation(e) {
+    _handleTanslation() {
         fetch(`${TRANSLATION_SERVER}/${this.state.word}`)
             .then(response => response.json())
             .then(data => {
@@ -44,14 +48,14 @@ export default class TranslationForm extends Component {
     render() {
         return (
             <div>
-                <label htmlFor="voc">Vocabulary</label>
-                <input id="voc" type="text" name="word" onChange={this._onChangeText} onKeyDown={e => {
+                <Label htmlFor="voc">Vocabulary</Label>
+                <Input fullwidth id="voc" type="text" name="word" onChange={this._onChangeText} onKeyDown={e => {
                     if (e.keyCode == 13) {
                         this._handleTanslation();
                     }
                 }}/>
-                <button onClick={this._handleTanslation}>Get translation</button>
-                <p>{this.state.translation}</p>
+                <Button inline onClick={this._handleTanslation}>Get translation</Button>
+                <Article>{this.state.translation}</Article>
             </div>
         );
     }

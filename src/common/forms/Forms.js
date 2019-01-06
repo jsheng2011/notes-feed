@@ -5,8 +5,9 @@ import TranslationForm from './TranslationForm';
 import TermForm from './TermForm';
 import Button from 'Common/button/Button';
 import ButtonGroup from 'Common/buttonGroup/ButtonGroup';
+import './Form.scss';
 
-export default class Dialog extends Component {
+export default class Form extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -28,7 +29,7 @@ export default class Dialog extends Component {
         switch (category) {
             case 'article':
                 return this._renderArticleForm();
-            case 'voc':
+            case 'vocabulary':
                 return this._renderVocabularyForm();
             case 'term':
                 return this._renderTermForm();
@@ -88,7 +89,7 @@ export default class Dialog extends Component {
         const {category} = this.state;
 
         return (
-            <div>
+            <div className="jsh-form">
                 <section>
                     {/* TODO: make it a component like radio group, since it is radio logic */}
                     <ButtonGroup onChange={v => {
@@ -104,21 +105,14 @@ export default class Dialog extends Component {
                         <Button info active={category === 'idea'} name="idea">Idea</Button>
                         <Button info active={category === 'todo'} name="todo">Todo</Button>
                     </ButtonGroup>
-                    <label htmlFor="catrgory">Catrgory: </label>
-                    <input type="text" id="catrgory" placeholder="type category" value={this.state.category} onChange={v => {
-                        this.setState({
-                            category: v.target.value
-                        });
-                    }}/>
-
                 </section>
                 <section>
                     { this._renderFormByCategory(this.state.category) }
                 </section>
 
                 <Button primary onClick={this._onSaveData}>Save</Button>
-                <hr/>
-                <p>TODO:to be deprecated</p>
+                {/* <hr/>
+                <p>TODO:to be deprecated</p> */}
                 {/* <section>
                     <button onClick={this._onSaveArticle}>Save</button>
                 </section> */}

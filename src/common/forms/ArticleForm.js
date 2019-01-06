@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import TextArea from 'Common/textarea/TextArea';
+import Input from 'Common/input/Input';
+import Label from 'Common/label/Label';
 
 export default class ArticleForm extends Component {
     constructor(props) {
@@ -45,21 +48,21 @@ export default class ArticleForm extends Component {
         return (
             <div>
                 <section>
-                    <label htmlFor="articleContent">Article Acontent：</label>
-                    <textarea id="articleContent" name="content" cols="40" rows="7" onChange={this._onTextChange}/>
+                    <Label htmlFor="articleContent">Article Content</Label>
+                    <TextArea fullwidth id="articleContent" name="content" onChange={this._onTextChange}></TextArea>
                 </section>
                 <section>
-                    <label htmlFor="articleTitle">Article ATitle：</label>
-                    <input id="articleTitle" name="title" type="text" onChange={this._onTextChange}/>
+                    <Label htmlFor="articleTitle">Article Title</Label>
+                    <Input fullwidth type="text" id="articleTitle" name="title" onChange={this._onTextChange}/>
                 </section>
                 <section>
-                    <label htmlFor="articleLink">Article Link:</label>
-                    <input id="articleLink" name="link" onChange={this._onTextChange}/>
+                    <Label htmlFor="articleLink">Article Link</Label>
+                    <Input fullwidth type="text" id="articleLink" name="link" onChange={this._onTextChange}/>
                 </section>
                 <section>
-                    <label htmlFor="articleMemo">Memo:</label>
-                    <textarea id="articleMemo" name="memo1" cols="40" rows="7" onChange={this._onTextChange}/>
-                    <textarea id="articleMemo1" cols="memo2" rows="7" onChange={this._onTextChange}/>
+                    <Label htmlFor="articleMemo">Memo:</Label>
+                    <TextArea fullwidth id="articleContent" name="memo1" onChange={this._onTextChange}/>
+                    <TextArea fullwidth id="articleContent" name="memo2" onChange={this._onTextChange}/>
                 </section>
             </div>
         );
