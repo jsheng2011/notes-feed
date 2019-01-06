@@ -1,0 +1,14 @@
+
+@import 'App/stylesheet/essentials/index.scss';
+
+.jsh-section{
+    &--space-down-s{
+        @extend %down-s-space;
+    }
+    &--space-down-m{
+        @extend %down-m-space;
+    }
+    &--space-down-l{
+        @extend %down-m-space;
+    }
+}

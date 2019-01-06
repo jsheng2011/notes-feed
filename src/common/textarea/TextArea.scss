@@ -18,4 +18,10 @@
     &__fullwidth{
         width: 100%;
     }
+    &--space-down-s{
+        @extend %down-s-space;
+    }
+    &--space-down-m{
+        @extend %down-m-space;
+    }
 }

@@ -22,9 +22,10 @@ export default class TextArea extends Component {
         }
     }
     render() {
-        const {fullwidth, style, ...others} = this.props;
+        const {fullwidth, spaceDown, style, ...others} = this.props;
         const classNames = cx('jsh-textarea', {
-            'jsh-textarea__fullwidth': fullwidth
+            'jsh-textarea__fullwidth': fullwidth,
+            [`jsh-textarea--space-down-${spaceDown}`]: spaceDown // TODO: make it more centralized
         });
         const styles = {
             ...style,

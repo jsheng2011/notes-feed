@@ -4,10 +4,11 @@ import './Input.scss';
 
 export default class Input extends Component {
     render() {
-        const {type, fullwidth, ...others} = this.props;
+        const {type, fullwidth, spaceDown, ...others} = this.props;
         const classNames = cx('jsh-input', {
             [`jsh-input__${type}`]: type,
-            'jsh-input__fullwidth': fullwidth
+            'jsh-input__fullwidth': fullwidth,
+            [`jsh-input--space-down-${spaceDown}`]: spaceDown
         });
 
         return (

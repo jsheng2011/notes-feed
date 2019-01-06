@@ -5,6 +5,7 @@ import TranslationForm from './TranslationForm';
 import TermForm from './TermForm';
 import Button from 'Common/button/Button';
 import ButtonGroup from 'Common/buttonGroup/ButtonGroup';
+import Section from 'Common/section/Section';
 import './Form.scss';
 
 export default class Form extends Component {
@@ -90,7 +91,7 @@ export default class Form extends Component {
 
         return (
             <div className="jsh-form">
-                <section>
+                <Section spaceDown="l">
                     {/* TODO: make it a component like radio group, since it is radio logic */}
                     <ButtonGroup onChange={v => {
                         this.setState({
@@ -105,10 +106,10 @@ export default class Form extends Component {
                         <Button info active={category === 'idea'} name="idea">Idea</Button>
                         <Button info active={category === 'todo'} name="todo">Todo</Button>
                     </ButtonGroup>
-                </section>
-                <section>
+                </Section >
+                <Section spaceDown="l">
                     { this._renderFormByCategory(this.state.category) }
-                </section>
+                </Section>
 
                 <Button primary onClick={this._onSaveData}>Save</Button>
                 {/* <hr/>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './index.scss';
+import './Quote.scss';
 
 export default class Quote extends Component {
     constructor(props) {

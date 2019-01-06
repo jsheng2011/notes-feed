@@ -35,17 +35,17 @@ export default class ArticleForm extends Component {
     render() {
         return (
             <div>
-                <Label htmlFor="jsh-term" block>Term</Label>
-                <Input fullwidth type="text" name="term" id="jsh-term" onChange={this._onChangText}/>
+                <Label spaceDown="s" block htmlFor="jsh-term" block>Term</Label>
+                <Input spaceDown="s" fullwidth type="text" name="term" id="jsh-term" onChange={this._onChangText}/>
 
-                <Label htmlFor="jsh-term__explanation">Explanation</Label>
-                <Input fullwidth type="text" name="explanation" id="jsh-term__explanation" onChange={this._onChangText}/>
+                <Label spaceDown="s" block htmlFor="jsh-term__explanation">Explanation</Label>
+                <Input spaceDown="s" fullwidth type="text" name="explanation" id="jsh-term__explanation" onChange={this._onChangText}/>
 
-                <Label htmlFor="jsh-term__source">Source</Label>
-                <Input fullwidth type="text" name="source" id="jsh-term__source" onChange={this._onChangText}/>
+                <Label spaceDown="s" block htmlFor="jsh-term__source">Source</Label>
+                <Input spaceDown="s" fullwidth type="text" name="source" id="jsh-term__source" onChange={this._onChangText}/>
 
-                <Label htmlFor="jsh-term__link">Link</Label>
-                <Input fullwidth type="text" name="link" id="jsh-term__link" onChange={this._onChangText}/>
+                <Label spaceDown="s" block htmlFor="jsh-term__link">Link</Label>
+                <Input spaceDown="s" fullwidth type="text" name="link" id="jsh-term__link" onChange={this._onChangText}/>
 
                 {/* TODO: bullet point */}
             </div>

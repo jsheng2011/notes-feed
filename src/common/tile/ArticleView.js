@@ -1,5 +1,5 @@
 import React from 'react';
-import Quote from 'Common/quote/index';
+import Quote from 'Common/quote/Quote';
 import Label from 'Common/label/Label';
 import Article from 'Common/article/Article';
 import ReadMore from 'Common/readmore/ReadMore';

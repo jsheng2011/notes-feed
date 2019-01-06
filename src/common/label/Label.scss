@@ -5,4 +5,7 @@
     &__block{
         display: block;
     }
+    &--space-down-s{
+        @extend %down-s-space;
+    }
 }
