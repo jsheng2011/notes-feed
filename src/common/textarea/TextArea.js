@@ -20,14 +20,14 @@ export default class TextArea extends Component {
         }
     }
     render() {
-        const {fullwidth, spaceDown, style, ...others} = this.props;
+        const {fullwidth, spaceDown, style, rows, ...others} = this.props;
         const classNames = cx('jsh-textarea', {
             'jsh-textarea__fullwidth': fullwidth,
             [`jsh-textarea--space-down-${spaceDown}`]: spaceDown // TODO: make it more centralized
         });
         const styles = {
             ...style,
-            height: `${40 * this.state.step}px`
+            height: rows ? `${rows * this.state.step}px` : `${40 * this.state.step}px`
         };
 
         return (

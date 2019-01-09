@@ -1,0 +1,5 @@
+@import 'App/stylesheet/essentials/index.scss';
+
+.jsh-article{
+    @extend %p;
+}

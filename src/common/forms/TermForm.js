@@ -35,7 +35,7 @@ export default class ArticleForm extends Component {
     render() {
         return (
             <div>
-                <Label spaceDown="s" block htmlFor="jsh-term" block>Term</Label>
+                <Label spaceDown="s" block htmlFor="jsh-term">Term</Label>
                 <Input spaceDown="s" fullwidth type="text" name="term" id="jsh-term" onChange={this._onChangText}/>
 
                 <Label spaceDown="s" block htmlFor="jsh-term__explanation">Explanation</Label>

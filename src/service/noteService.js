@@ -1,6 +1,22 @@
 import NOTE_SERVER from 'Const/noteServer.js';
 import urlRequest from './urlRequest.js';
 
+// todo: https://stackoverflow.com/questions/30008114/how-do-i-promisify-native-xhr
+function convertMarkdown(data, url = NOTE_SERVER, done) {
+    urlRequest({
+        url,
+        data,
+        method: 'post',
+        use: xhttp => {
+            xhttp.setRequestHeader('Content-type', 'application/json');
+            xhttp.setRequestHeader('Accept', 'application/json');
+        },
+        done: (...arg) => {
+            done(...arg);
+        }
+    });
+}
+
 function addNote(data, url = NOTE_SERVER) {
     urlRequest({
         url,
@@ -51,5 +67,6 @@ export {
     deleteNote,
     readAllNotes,
     updateNoteById,
-    deleteNoteById
+    deleteNoteById,
+    convertMarkdown
 };

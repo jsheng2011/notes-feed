@@ -37,12 +37,16 @@
     "sass-loader": "^7.1.0",
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "github-markdown-css": "^2.10.0",
+    "highlight.js": "^9.13.1",
+    "install": "^0.12.2",
     "lodash": "^4.17.11",
     "normalize.css": "^8.0.1",
+    "npm": "^6.5.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-router-dom": "^4.3.1"

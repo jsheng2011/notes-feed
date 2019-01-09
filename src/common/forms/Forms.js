@@ -3,6 +3,7 @@ import {addNote, deleteNote, updateNoteById, deleteNoteById} from 'Service/noteS
 import ArticleForm from './ArticleForm';
 import TranslationForm from './TranslationForm';
 import TermForm from './TermForm';
+import NoteForm from './NoteForm';
 import Button from 'Common/button/Button';
 import ButtonGroup from 'Common/buttonGroup/ButtonGroup';
 import Section from 'Common/section/Section';
@@ -12,7 +13,7 @@ export default class Form extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            category: 'term',
+            category: 'note',
             newArticle: {}
         };
 
@@ -58,7 +59,7 @@ export default class Form extends Component {
     }
 
     _renderNoteForm() {
-        return 'this is _renderNoteForm';
+        return <NoteForm getDataToBeSent={this._getDataToBeSent}/>;
     }
 
     _renderIdeaForm() {
