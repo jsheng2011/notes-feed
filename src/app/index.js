@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import Tile from 'Common/tile';
 import Forms from 'Common/forms/Forms';
 import {readAllNotes} from 'Service/noteService';
+import moment from 'moment';
 
 class App extends Component {
     constructor(props) {
@@ -13,14 +14,18 @@ class App extends Component {
             data: null
         };
         this._populateData = this._populateData.bind(this);
+        this._getTodayNote = this._getTodayNote.bind(this);
     }
     componentDidMount() {
         readAllNotes(data => {
-            console.log('data', data);
+            console.log('data', this._getTodayNote(data));
             this.setState({
-                data
+                data: this._getTodayNote(data)
             });
         });
+    }
+    _getTodayNote(data) {
+        return data.filter(item => moment().isSame(moment(item.modifiedTime), 'd'));
     }
     _populateData() {
         if (this.state.data) {

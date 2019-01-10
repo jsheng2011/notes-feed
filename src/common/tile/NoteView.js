@@ -7,16 +7,7 @@ export default function NoteView(props) {
 
     return (
         <div>
-            <section>
-                <small>
-                    content: {content}
-                </small>
-            </section>
-            <section>
-                <small>
-                    source: {source}
-                </small>
-            </section>
+            <div className="markdown-body" dangerouslySetInnerHTML={{__html: content}}/>
         </div>
     );
 }
