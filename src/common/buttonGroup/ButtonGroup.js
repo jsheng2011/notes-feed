@@ -10,7 +10,7 @@ export default class ButtonGroup extends Component {
     _renderButtons() {
         return this.props.children.map(child => cloneElement(child, {
             onClick: () => {
-                this.props.onChange(child.props.name);
+                this.props.onChange && this.props.onChange(child.props.name);
                 child.props.onClick && child.props.onClick();
             },
 
